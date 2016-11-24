@@ -10,4 +10,4 @@ script:
   - git clone https://github.com/elopio/snapcraft
   - cd snapcraft
   - git checkout build_external_snaps
-  - docker run -v "$(pwd)":/cwd ubuntu:xenial sh -c "cd /cwd && python3 -m external_snaps_tests $REPO"
+  - $TRAVIS_BUILD_DIR/snap-in-docker.sh $REPO
