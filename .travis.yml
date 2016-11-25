@@ -5,7 +5,7 @@ services: [docker]
 env:
   matrix:
     - REPO=https://github.com/nextcloud/nextcloud-snap
-    - REPO=https://github.com/juju/juju
+    - REPO="https://github.com/elopio/juju -b snapcraft-gcc"
 
 script:
   - git clone https://github.com/elopio/snapcraft
