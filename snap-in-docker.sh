@@ -9,4 +9,4 @@ set -ev
 
 repo="$1"
 
-docker run -v "$(pwd)":/cwd ubuntu:xenial sh -c "apt update && apt install git locales python3 python3-docopt snapcraft -y && locale-gen && cd /cwd && python3 -m external_snaps_tests $repo"
+docker run -v "$(pwd)":/cwd ubuntu:xenial sh -c "apt update && apt install git locales python3 python3-docopt snapcraft -y && locale-gen && export LC_ALL=en_US.UTF-8 && cd /cwd && python3 -m external_snaps_tests $repo"
