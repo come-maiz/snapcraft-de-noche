@@ -15,8 +15,9 @@ if [ ! -z "$2" ]; then
 fi
 
 if [ ! -z "$3" ]; then
+    ppa="$3"
     apt install software-properties-common -y
-    add-apt-repository -y ppa:gophers/archive
+    add-apt-repository -y $ppa
 fi
 
 apt update
