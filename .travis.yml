@@ -23,6 +23,10 @@ env:
     - REPO=lp:pc-kernel-snap
     - REPO=lp:dragonboard-kernel-snap
     - REPO=lp:pi2-kernel-snap
+    # Kernel team snaps
+    - REPO=git://kernel.ubuntu.com/ubuntu/ubuntu-xenial.git
+    - REPO=git://kernel.ubuntu.com/ubuntu/ubuntu-xenial.git REPO_BRANCH=snapdragon
+    - REPO=git://kernel.ubuntu.com/ubuntu/ubuntu-xenial.git REPO_BRANCH=raspi2
     # System enablement snaps.
     - REPO=https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/network-manager
     - REPO=https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/modem-manager
