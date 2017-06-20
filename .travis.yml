@@ -39,7 +39,7 @@ env:
 script:
   - git clone https://github.com/kyrofa/snapcraft
   - cd snapcraft
-  - git checkout feature/add_ros_lunar_snap
+  - git checkout feature/catkin_support_lunar
   - $TRAVIS_BUILD_DIR/snap-in-docker.sh $REPO $REPO_BRANCH $PPA
 
 after_failure:
