@@ -50,6 +50,9 @@ script:
   - echo Building with snapcraft $(snapcraft --version) ...
   - sudo /snap/bin/snapcraft cleanbuild
 
+after_success:
+  - sudo snap install *.snap --dangerous
+
 after_failure:
   # Run again, using the latest released snapcraft, to see if it's a regression.
   - sudo snap refresh snapcraft --stable
