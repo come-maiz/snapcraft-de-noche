@@ -42,7 +42,7 @@ script:
   - sudo apt install --yes bzr git python3 python3-docopt snapd software-properties-common
   - sudo snap install snapcraft --classic --edge
   - if [ ! -z "$PPA" ]; then sudo add-apt-repository --yes PPA; fi
-  - ./setup_lxd.sh
+  - sudo ./setup_lxd.sh
   - git clone --progress $REPO repo
   - cd repo
   - if [ ! -z "$REPO_BRANCH" ]; then git checkout $REPO_BRANCH; fi
