@@ -46,11 +46,11 @@ script:
   - git clone --progress $REPO repo
   - cd repo
   - if [ ! -z "$REPO_BRANCH" ]; then git checkout $REPO_BRANCH; fi
-  - echo Building with snapcraft $(snapcraft --version) ...
-  - snapcraft cleanbuild --debug
+  - echo Building with snapcraft $(/snap/bin/snapcraft --version) ...
+  - /snap/bin/snapcraft cleanbuild --debug
 
 after_failure:
   # Run again, using the latest released snapcraft, to see if it's a regression.
   - sudo snap refresh snapcraft --stable
-  - echo Building with snapcraft $(snapcraft --version) ...
-  - snapcraft cleanbuild --debug
+  - echo Building with snapcraft $(/snap/bin/snapcraft --version) ...
+  - /snap/bin/snapcraft cleanbuild --debug
