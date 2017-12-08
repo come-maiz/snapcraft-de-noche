@@ -38,13 +38,20 @@ env:
     - REPO=https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/pulseaudio
 
 script:
-  - git clone https://github.com/snapcore/snapcraft
-  - cd snapcraft
-  - $TRAVIS_BUILD_DIR/snap-in-docker.sh $REPO $REPO_BRANCH $PPA
+  - sudo apt update
+  - sudo apt install --yes bzr git python3 python3-docopt snapd software-properties-common
+  - export PATH=/snap/bin:$PATH
+  - sudo snap install snapcraft --classic --edge
+  - if [ ! -z "$PPA" ]; then sudo add-apt-repository --yes PPA; fi
+  - sudo ./setup_lxd.sh
+  - git clone --progress $REPO repo
+  - cd repo
+  - if [ ! -z "$REPO_BRANCH" ]; then git checkout $REPO_BRANCH; fi
+  - echo Building with snapcraft $(snapcraft --version) ...
+  - sudo /snap/bin/snapcraft cleanbuild
 
 after_failure:
-  # Run again, using the latest snapcraft tag, to see if it's a regression.
-  - last_committed_tag="$(git describe --tags --abbrev=0)"
-  - git checkout ${last_committed_tag}
-  - echo Building with snapcraft ${last_committed_tag} ...
-  - $TRAVIS_BUILD_DIR/snap-in-docker.sh $REPO $REPO_BRANCH $PPA
+  # Run again, using the latest released snapcraft, to see if it's a regression.
+  - sudo snap refresh snapcraft --stable
+  - echo Building with snapcraft $(snapcraft --version) ...
+  - sudo /snap/bin/snapcraft cleanbuild
