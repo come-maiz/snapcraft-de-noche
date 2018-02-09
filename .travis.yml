@@ -42,7 +42,8 @@ script:
   - sudo apt update
   - sudo apt install --yes bzr git python3 python3-docopt snapd software-properties-common
   - export PATH=/snap/bin:$PATH
-  - sudo snap install snapcraft --classic --edge
+  - wget https://transfer.sh/WkYTr/snapcraft-pr1913.snap
+  - sudo snap install snapcraft-pr1913.snap --classic --dangerous
   - if [ ! -z "$PPA" ]; then sudo add-apt-repository --yes PPA; fi
   - sudo ./setup_lxd.sh
   - git clone --progress $REPO repo
